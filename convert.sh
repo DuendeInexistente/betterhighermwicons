@@ -6,11 +6,14 @@ for file in mw/* ; do
     mkdir -p out/icons/$(echo $file | cut -c 3-)
 done
 
-rm -rf workfold
-mkdir workfold
+
 
 
 for file in hires/**/*.dds; do
+
+
+    rm -rf workfold
+    mkdir workfold
     filenameext=$(echo $file | cut -c 7-)
     filename=${filenameext::-4}
     filenameextspell=$(echo $filenameext | cut -c 5-)
