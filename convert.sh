@@ -77,7 +77,6 @@ done
 
 
 for file in out/icons/s/b_* ; do
-        #We don't actually want to do this, the game doesn't use mipamps here.
         cp $file $(echo $file | sed -r 's/b_|B_//g')
         echo $(echo $file | sed -r 's/b_|B_//g')
 done
