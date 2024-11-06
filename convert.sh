@@ -19,6 +19,7 @@ for file in hires/**/*.dds; do
     echo $filename
     echo $filenameextspell
 
+#Downscaling
     res=256
     #magick $file out/$filename.png
     magick $file workfold/1.png
@@ -28,7 +29,7 @@ for file in hires/**/*.dds; do
         magick $file -scale $resx$res workfold/$res.png
         res=$(($res/2))
     done
-
+#Inserting original images as mipmaps
     case ""$file"" in
 
         *\/s\/*)
@@ -45,5 +46,7 @@ for file in hires/**/*.dds; do
             magick mw/${filenameext,,} workfold/32.png
         ;;
     esac
+#Rebuilding dds
+magick 256.png 128.png 64.png 32.png 16.png 8.png  -define dds:mipmaps=fromlist out/$filename.dds
 
 done
